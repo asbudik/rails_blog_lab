@@ -1,17 +1,15 @@
-<div class="col-xs-4">
-<h2><%= @post.title %></h2>
+<div class="col-xs-3 headlines show-all-posts">
 <% @post.tags.each do |tag| %>
   <button class="tags"><%= tag.name %></button>
 <% end %>
 
+</div>
   <div class="col-xs-3 headlines show-all-posts"><h4 class="headlines-title"><a href="posts/<%= @post.id %>"><%= @post.title %></a></h4>
     <h6><%= @post.author %></h6>
     <div class="divider"></div>
     <p><%= @post.description %></p>
 
-<a href="<%= @post.id %>/edit"><button>Edit</button></a>
-
-<form class="delete" method="post" action="/posts/<%= @post.id %>">
+<a href="<%= @post.id %>/edit"><button>Edit</button></a><form class="delete" method="post" action="/posts/<%= @post.id %>">
   <input name="_method" type="hidden" value="delete" />
   <button>Delete Post</button>
   <%= token_tag form_authenticity_token %>

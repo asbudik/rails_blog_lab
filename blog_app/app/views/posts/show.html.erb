@@ -11,8 +11,10 @@
 
 <a href="<%= @post.id %>/edit"><button>Edit</button></a>
 
-<form class="delete" method="post" action="/posts/<%= @post.id %>?_method=DELETE">
+<form class="delete" method="post" action="/posts/<%= @post.id %>">
+  <input name="_method" type="hidden" value="delete" />
   <button>Delete Post</button>
+  <%= token_tag form_authenticity_token %>
 </form>
 </div>
 </div>

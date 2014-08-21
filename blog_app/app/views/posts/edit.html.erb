@@ -1,5 +1,5 @@
-<form action="/posts/<%= @post.id %>?_method=PUT" method="post">
-  
+<form action="/posts/<%= @post.id %>" method="post">
+  <input name="_method" type="hidden" value="patch" />
   <input type="text" name="post[title]" value="<%= @post.title %>" autofocus>
   </br>
   <input type="text" name="post[author]" value="<%= @post.author %>">

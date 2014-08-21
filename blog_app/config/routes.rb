@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
 
 
-  put '/posts/:id', to: 'posts#update'
+  patch '/posts/:id', to: 'posts#update'
 
 
 

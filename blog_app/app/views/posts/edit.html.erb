@@ -1,10 +1,10 @@
-<form action="/posts" method="post">
+<form action="/posts/<%= @post.id %>?_method=PUT" method="post">
   
-  <input type="text" name="post" value="<%= @edit_post.title %>" autofocus>
+  <input type="text" name="post[title]" value="<%= @post.title %>" autofocus>
   </br>
-  <input type="text" name="post" value="<%= @edit_post.author %>">
+  <input type="text" name="post[author]" value="<%= @post.author %>">
   </br>
-  <textarea name="post[description]"><%= @edit_post.description %></textarea>
+  <textarea name="post[description]"><%= @post.description %></textarea>
   <%= token_tag form_authenticity_token %>
 
   <button class="btn btn-primary"> Edit Post </button>

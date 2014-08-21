@@ -1,5 +1,5 @@
 <% @tags.each do |tag| %>
-<h2>  <a href="tags/<%= tag.id %>"><%= tag.name %></a></h2>
+<div class="col-xs-3 tagbox"><h6>  <a href="tags/<%= tag.id %>"><button class="tags"><%= tag.name %></button></a></h6></div>
 
 
 <% end %>

@@ -1,4 +1,8 @@
+<a><h6><button class="tags"><%= @tag.name %></button></h6></a>
 <% @tag.posts.each do |post| %>
-  <%= post.title %>
-  <%= post.author %>
-  <% end %>
+<div class="col-xs-3 headlines show-all-posts"><h4 class="headlines-title"><a href="/posts/<%= post.id %>"><%= post.title %></a></h4>
+    <h6><%= post.author %></h6>
+    <div class="divider"></div>
+    <p><%= post.description %></p>
+  </div>
+<% end %>

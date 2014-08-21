@@ -32,7 +32,10 @@ Rails.application.routes.draw do
 
 
 
-  put '/posts', to: 'posts#update'
+  put '/posts/:id', to: 'posts#update'
+
+
+
 
   delete '/posts/:id', to: 'posts#destroy'
 end

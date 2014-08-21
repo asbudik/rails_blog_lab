@@ -1,9 +1,18 @@
+<div class="col-xs-4">
 <h2><%= @post.title %></h2>
 <% @post.tags.each do |tag| %>
-  <%= tag.name %>
+  <button class="tags"><%= tag.name %></button>
 <% end %>
 
-<p><%= @post.author %></p>
-<p><%= @post.description %></p>
+  <div class="col-xs-3 headlines show-all-posts"><h4 class="headlines-title"><a href="posts/<%= @post.id %>"><%= @post.title %></a></h4>
+    <h6><%= @post.author %></h6>
+    <div class="divider"></div>
+    <p><%= @post.description %></p>
 
 <a href="<%= @post.id %>/edit"><button>Edit</button></a>
+
+<form class="delete" method="post" action="/posts/<%= @post.id %>?_method=DELETE">
+  <button>Delete Post</button>
+</form>
+</div>
+</div>

@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   def home
     @top_posts = Post.all.limit(3).order(created_at: :asc)
   end
+
   def new
   end
 
@@ -35,17 +36,23 @@ class PostsController < ApplicationController
 
   def edit
     id = params[:id]
-    @edit_post = Post.find(id)
+    @post = Post.find(id)
   end
 
   def update
     edit_post = params[:post].permit(:title, :author, :description)
-    Post.update_attributes(edit_post)
+    update_post = Post.find_by_id(params[:id])
+    update_post.update_attributes(edit_post)
+    update_post.save
 
-    redirect_to "/posts"
+    redirect_to "/posts/#{params[:id]}"
   end
 
   def destroy
+    delete_post = Post.find_by_id(params[:id])
+    delete_post.destroy
+
+    redirect_to "/posts"
   end
 
 end

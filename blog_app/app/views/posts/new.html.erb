@@ -1,0 +1,14 @@
+<form action="/posts" method="post">
+  
+  <input type="text" name="post[title]" placeholder="Title" autofocus>
+  </br>
+  <input type="text" name="post[author]" placeholder="Author">
+  </br>
+  <input type="text" name="tag[name]" id="tag" placeholder="Tags"></br>
+  <label for="tag"><span class="seperate-tags">(Seperate tags with spaces)</span></label>
+  </br>
+  <textarea name="post[description]" placeholder="Description"></textarea>
+  <%= token_tag form_authenticity_token %>
+
+  <button class="btn btn-primary"> Save Post </button>
+</form>

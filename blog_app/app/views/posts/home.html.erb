@@ -1,0 +1,7 @@
+<% @top_posts.each do |post| %>
+<div class="col-xs-3 headlines"><h4 class="headlines-title"><a href="posts/<%= post.id %>"><%= post.title %></a></h4>
+    <h6><%= post.author %></h6>
+    <div class="divider"></div>
+    <p><%= post.description %></p>
+  </div>
+<% end %>

@@ -7,6 +7,11 @@
  * Based on Bootstrap
 */
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+.edit-button {
+  position: relative;
+  width: 300px;
+}
+
 .tags {
   margin-top: 5px;
   width: 200px;
@@ -6412,5 +6417,12 @@ textarea {
   top: 20px;
   left: -130px;
 }
-
-
+.edit-body {
+  height: 400px;
+  width: 400px;
+}
+.edit-button {
+  position: relative;
+  width: 400px;
+  left: -100px;
+}

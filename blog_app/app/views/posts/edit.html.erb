@@ -1,11 +1,11 @@
-<form action="/posts/<%= @post.id %>" method="post">
-  <input name="_method" type="hidden" value="patch" />
-  <input type="text" name="post[title]" value="<%= @post.title %>" autofocus>
-  </br>
-  <input type="text" name="post[author]" value="<%= @post.author %>">
-  </br>
-  <textarea name="post[description]"><%= @post.description %></textarea>
-  <%= token_tag form_authenticity_token %>
 
-  <button class="btn btn-primary"> Edit Post </button>
-</form>
+<div class="col-xs-offset-4 col-xs-4">
+  <%= form_for @post do |f| %>
+    <%= f.text_field :title, placeholder: "Title", class: "form-control" %>
+    <%= f.text_field :author, placeholder: "Author", class: "form-control" %>
+    <input type="text" name="tag[name]" class="form-control" id="tag" placeholder="Tags"></br>
+    <label for="tag"><span class="seperate-tags">(Seperate tags with spaces)</span></label>
+    <%= f.text_area :description, placeholder: "Description", class: "edit-body" %>
+    <%= f.submit "Update Post", class: "btn btn-primary edit-button" %>
+  <% end %>
+</div>

@@ -1,6 +1,7 @@
 <% @top_posts.each do |post| %>
 <div class="col-xs-3 headlines"><h4 class="headlines-title"><a href="posts/<%= post.id %>"><%= post.title %></a></h4>
     <h6><%= post.author %></h6>
+    <p><%= post.created_at.in_time_zone('Pacific Time (US & Canada)').strftime(" %B %d, %Y %I:%M %p") %></p>
     <div class="divider"></div>
     <p><%= post.description %></p>
   </div>

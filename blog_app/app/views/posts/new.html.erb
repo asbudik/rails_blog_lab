@@ -1,14 +1,12 @@
-<form action="/posts" method="post">
-  
-  <input type="text" name="post[title]" placeholder="Title" autofocus>
-  </br>
-  <input type="text" name="post[author]" placeholder="Author">
-  </br>
-  <input type="text" name="tag[name]" id="tag" placeholder="Tags"></br>
-  <label for="tag"><span class="seperate-tags">(Seperate tags with spaces)</span></label>
-  </br>
-  <textarea name="post[description]" placeholder="Description"></textarea>
-  <%= token_tag form_authenticity_token %>
 
-  <button class="btn btn-primary"> Save Post </button>
-</form>
+<div class="col-xs-offset-4 col-xs-4">
+  <%= form_for @posts do |f| %>
+    <%= f.text_field :title, placeholder: "Title", class: "form-control" %>
+    <%= f.text_field :author, placeholder: "Author", class: "form-control" %>
+    <input type="hidden" name="post[created_at]" value="<%= DateTime.now.utc.in_time_zone("EST") %>">
+    <input type="text" name="tag[name]" class="form-control" id="tag" placeholder="Tags"></br>
+    <label for="tag"><span class="seperate-tags">(Seperate tags with spaces)</span></label>
+    <%= f.text_area :description, placeholder: "Description", class: "edit-body" %>
+    <%= f.submit "Create Post", class: "btn btn-primary edit-button" %>
+  <% end %>
+</div>

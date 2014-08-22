@@ -38,6 +38,15 @@ class PostsController < ApplicationController
   def edit
     id = params[:id]
     @post = Post.find(id)
+    if @post.tags.length > 0
+      @tags = @post.tags
+      @update_tags = ""
+      @tags.each do |tag|
+        @update_tags += " #{tag.name}"
+      end
+    else
+      @update_tags = ""
+    end
   end
 
   def update
@@ -50,25 +59,48 @@ class PostsController < ApplicationController
 
     post = Post.find_by_id(params[:id])
 
-    if post
-      post.update_attributes(new_update_post)
-      post.tags.clear
+    post.update_attributes(new_update_post)
+
+    check_ids_for_empty = post.tags.pluck(:id)
+    post.tags.destroy_all
+    
+    check_ids_for_empty.each do |check_id|
+      Tag.find_by_id(check_id).destroy
+    end
 
       break_tags_on_white_space.each do |tag|
         downcase_single_tag = tag.downcase!
-        downcase_single_tag = Tag.where(name: tag).first_or_create
-        if downcase_single_tag.created_at != Time.now
-          post.tags << downcase_single_tag
+
+        existing_tag = Tag.where(name: tag).first
+        if !existing_tag
+          new_tag = Tag.create(name: tag)
+          post.tags << new_tag
+        else
+          post.tags.each do |post|
+            if post != existing_tag
+              post.tags << existing_tag
+            end
+          end
         end
       end
-    end
     redirect_to posts_path(params[:id])
   end
 
   def destroy
     delete_post = Post.find_by_id(params[:id])
-    delete_post.destroy
+    
+    delete_post.blogs.each do |association|
+      if association.post_id == delete_post.id
+        tag = association.tag_id
+        suspect_tag = Tag.all.find(tag)
+        association.destroy
+        if suspect_tag.blogs.length == 0
+          suspect_tag.destroy
+        end
 
+      end
+    end
+    delete_post.destroy
     redirect_to posts_path
   end
 

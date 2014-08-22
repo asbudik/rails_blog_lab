@@ -3,7 +3,7 @@
   <%= form_for @post do |f| %>
     <%= f.text_field :title, placeholder: "Title", class: "form-control" %>
     <%= f.text_field :author, placeholder: "Author", class: "form-control" %>
-    <input type="text" name="tag[name]" class="form-control" id="tag" placeholder="Tags"></br>
+    <input type="text" name="tag[name]" class="form-control" id="tag" placeholder="Tags" value="<%= @update_tags %>"></br>
     <label for="tag"><span class="seperate-tags">(Seperate tags with spaces)</span></label>
     <%= f.text_area :description, placeholder: "Description", class: "edit-body" %>
     <%= f.submit "Update Post", class: "btn btn-primary edit-button" %>

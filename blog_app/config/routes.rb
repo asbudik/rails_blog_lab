@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   # get landing page
 get '/', to: 'posts#home'
 
-resources :posts
+resources :posts do
+  resources :comments
+end
 
 
   # get all tags

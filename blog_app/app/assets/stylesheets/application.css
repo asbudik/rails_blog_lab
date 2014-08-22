@@ -6352,9 +6352,11 @@ textarea {
   border: 1px solid grey;
   border-radius: 3px;
   width: 300px;
-  height: 400px;
+  height: 450px;
   margin: 20px;
+
 }
+
 .divider {
   height: 1px;
   background-color: grey;
@@ -6364,8 +6366,13 @@ textarea {
   margin-top: 20px;
   text-align: center;
 }
+.tags-box {
+  padding: 20px;
+  padding-left: 45px;
+}
 .show-all-posts {
-  height: 200px;
+  height: 300px;
+  overflow: hidden;
 }
 .seperate-tags {
   position: relative;
@@ -6399,6 +6406,7 @@ textarea {
 .title {
   position: relative;
   left: 520px;
+  margin-right: 520px;
   top: 120px;
   letter-spacing: 6px;
   font-size: 90px;
@@ -6420,6 +6428,20 @@ textarea {
 .edit-body {
   height: 400px;
   width: 400px;
+}
+.show-page {
+  height: 580px;
+  width: 600px;
+  overflow: scroll;
+}
+.delete-button {
+  position: relative;
+  top: -19px;
+  left: 40px;
+}
+
+.showheader {
+  margin-top: 50px;
 }
 .edit-button {
   position: relative;

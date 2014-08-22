@@ -6425,6 +6425,11 @@ textarea {
   top: 20px;
   left: -130px;
 }
+.back {
+  position: relative;
+  top: 24px;
+  font-size: 25px;
+}
 .edit-body {
   height: 400px;
   width: 400px;
